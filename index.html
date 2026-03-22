@@ -76,6 +76,11 @@ button {
   color: white;
   cursor: pointer;
 }
+
+button:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
 </style>
 </head>
 
@@ -90,56 +95,128 @@ button {
   <div class="overlay">
     <h1>🔥 Rage City RP 🔥</h1>
     <p>Deutscher Roleplay Server</p>
+    <p style="color:red; font-weight:bold;">❗ Regelwerk lesen ist Pflicht ❗</p>
   </div>
 </div>
 
 <div class="container">
 
-  <div class="rule-box">
-    <h2>§1 Allgemeines</h2>
-    <p>Mit dem Betreten des Servers erklärst du dich mit allen Regeln einverstanden.</p>
-    <p>Das Team behält sich vor, Spieler bei Regelverstößen zu bestrafen.</p>
-  </div>
+<div class="rule-box">
+<h2>§1 Allgemeines</h2>
+<ul>
+<li>Mit Betreten des Servers akzeptierst du alle Regeln</li>
+<li>Anweisungen des Teams sind Folge zu leisten</li>
+<li>Unwissenheit schützt nicht vor Strafe</li>
+<li>Respektvoller Umgang ist Pflicht</li>
+<li>Trolling ist verboten</li>
+</ul>
+</div>
 
-  <div class="rule-box">
-    <h2>§2 Roleplay Regeln</h2>
-    <ul>
-      <li>Realistisches Verhalten ist Pflicht</li>
-      <li>Bleibe immer in deiner Rolle</li>
-      <li>Schütze dein Leben</li>
-    </ul>
-  </div>
+<div class="rule-box">
+<h2>§2 Roleplay Grundlagen</h2>
+<ul>
+<li>Realistisches Roleplay ist Pflicht</li>
+<li>Du musst dein Leben schützen (FearRP)</li>
+<li>Bleibe immer in deiner Rolle</li>
+<li>RP hat immer Vorrang</li>
+<li>Kein Ausloggen im RP</li>
+</ul>
+</div>
 
-  <div class="rule-box">
-    <h2>§3 Verboten</h2>
-    <ul>
-      <li>RDM (Random Deathmatch)</li>
-      <li>VDM (Vehicle Deathmatch)</li>
-      <li>Meta-Gaming</li>
-      <li>Power-RP</li>
-    </ul>
-  </div>
+<div class="rule-box">
+<h2>§3 Verboten</h2>
+<ul>
+<li>RDM (Random Deathmatch)</li>
+<li>VDM (Vehicle Deathmatch)</li>
+<li>Meta-Gaming</li>
+<li>Power-RP</li>
+<li>Fail-RP</li>
+<li>Combat Logging</li>
+<li>Bugusing</li>
+</ul>
+</div>
 
-  <div class="rule-box">
-    <h2>§4 Strafen</h2>
-    <ul>
-      <li>Verwarnung</li>
-      <li>Kick</li>
-      <li>Temp-Bann</li>
-      <li>Perma-Bann</li>
-    </ul>
-  </div>
+<div class="rule-box">
+<h2>§4 Kommunikation</h2>
+<ul>
+<li>Beleidigungen sind verboten</li>
+<li>Rassismus ist verboten</li>
+<li>Sexismus ist verboten</li>
+<li>Voice Chat Pflicht</li>
+<li>Kein Soundboard Spam</li>
+</ul>
+</div>
 
-  <div class="join">
-  <h2>Beitreten</h2>
-  <p class="ip" id="ip">127.0.0.1:30120</p>
-  <button onclick="copyIP()">IP kopieren</button>
+<div class="rule-box">
+<h2>§5 New Life Regel</h2>
+<ul>
+<li>Nach dem Tod keine Erinnerungen</li>
+<li>Nicht sofort zurückkehren</li>
+<li>Alte Konflikte sind vergessen</li>
+</ul>
+</div>
 
-  <a href="https://discord.gg/mEZrCZA7" target="_blank">
-    <button style="margin-top:10px; background:#5865F2;">
-      Discord beitreten
-    </button>
-  </a>
+<div class="rule-box">
+<h2>§6 Kriminalität</h2>
+<ul>
+<li>Überfälle nur mit RP Grund</li>
+<li>Keine sinnlosen Tötungen</li>
+<li>Geiseln realistisch behandeln</li>
+<li>Keine Dauerkriminalität</li>
+</ul>
+</div>
+
+<div class="rule-box">
+<h2>§7 Polizei</h2>
+<ul>
+<li>Anweisungen befolgen</li>
+<li>Flucht muss realistisch sein</li>
+<li>RP mit Polizei ausspielen</li>
+</ul>
+</div>
+
+<div class="rule-box">
+<h2>§8 Fahrzeuge</h2>
+<ul>
+<li>Realistisches Fahren Pflicht</li>
+<li>Kein Offroad mit Supersportwagen</li>
+<li>Keine absichtlichen Crashes</li>
+</ul>
+</div>
+
+<div class="rule-box">
+<h2>§9 Support</h2>
+<ul>
+<li>Support nur über Discord</li>
+<li>Kein Support im RP</li>
+<li>Logs entscheiden</li>
+</ul>
+</div>
+
+<div class="rule-box">
+<h2>§10 Strafen</h2>
+<ul>
+<li>Verwarnung</li>
+<li>Kick</li>
+<li>Temp Bann</li>
+<li>Perma Bann</li>
+</ul>
+</div>
+
+<div class="join">
+<h2>Beitreten</h2>
+<p class="ip" id="ip">127.0.0.1:30120</p>
+
+<button onclick="copyIP()">IP kopieren</button>
+
+<br>
+
+<a href="https://discord.gg/mEZrCZA7" target="_blank" style="text-decoration:none;">
+  <button style="margin-top:10px; background:#5865F2; padding:12px 25px; font-size:16px;">
+    💬 Discord beitreten (Pflicht)
+  </button>
+</a>
+
 </div>
 
 </div>
