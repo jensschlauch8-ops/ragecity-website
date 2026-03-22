@@ -1,76 +1,122 @@
 <!DOCTYPE html>
-    }
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Rage City RP Regelwerk</title>
 
-    button {
-      background: red;
-      border: none;
-      padding: 12px 25px;
-      color: white;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0d0d0d;
+  color: white;
+  line-height: 1.6;
+}
 
-    button:hover {
-      background: #ff1a1a;
-      transform: scale(1.05);
-    }
+header {
+  background: black;
+  padding: 30px;
+  text-align: center;
+  border-bottom: 2px solid red;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #111;
-      color: #777;
-      margin-top: 40px;
-    }
-  </style>
+h1 {
+  margin: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+}
+
+h2 {
+  color: red;
+  margin-top: 40px;
+}
+
+.rule-box {
+  background: #151515;
+  padding: 20px;
+  margin: 20px 0;
+  border-left: 4px solid red;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.join {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.ip {
+  font-size: 1.3rem;
+  color: red;
+}
+
+button {
+  padding: 10px 20px;
+  background: red;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>🔥 Rage City RP 🔥</h1>
-  <p>Realistisches deutsches Roleplay</p>
+  <h1>🔥 Rage City RP Regelwerk 🔥</h1>
 </header>
 
-<nav>
-  <a href="#home">Home</a>
-  <a href="#rules">Regeln</a>
-  <a href="#join">Beitreten</a>
-</nav>
+<div class="container">
 
-<section id="home">
-  <div class="card">
-    <h2>Willkommen</h2>
-    <p>Willkommen bei Rage City RP! Erlebe realistisches Roleplay, baue deine Story auf und werde Teil unserer Community.</p>
+  <div class="rule-box">
+    <h2>§1 Allgemeines</h2>
+    <p>Mit dem Betreten des Servers erklärst du dich mit allen Regeln einverstanden.</p>
+    <p>Das Team behält sich vor, Spieler bei Regelverstößen zu bestrafen.</p>
   </div>
-</section>
 
-<section id="rules">
-  <div class="card">
-    <h2>Regelwerk</h2>
+  <div class="rule-box">
+    <h2>§2 Roleplay Regeln</h2>
     <ul>
-      <li>Kein RDM (Random Deathmatch)</li>
-      <li>Kein VDM (Vehicle Deathmatch)</li>
-      <li>Kein Meta-Gaming</li>
-      <li>Realistisches Roleplay ist Pflicht</li>
-      <li>Respektvoller Umgang</li>
+      <li>Realistisches Verhalten ist Pflicht</li>
+      <li>Du musst dein Leben schützen</li>
+      <li>Bleibe immer in deiner Rolle</li>
     </ul>
   </div>
-</section>
 
-<section id="join">
-  <div class="card join-box">
+  <div class="rule-box">
+    <h2>§3 Verboten</h2>
+    <ul>
+      <li>RDM (Random Deathmatch)</li>
+      <li>VDM (Vehicle Deathmatch)</li>
+      <li>Meta-Gaming</li>
+      <li>Power-RP</li>
+    </ul>
+  </div>
+
+  <div class="rule-box">
+    <h2>§4 Strafen</h2>
+    <ul>
+      <li>Verwarnung</li>
+      <li>Kick</li>
+      <li>Temporärer Bann</li>
+      <li>Permanenter Bann</li>
+    </ul>
+  </div>
+
+  <div class="join">
     <h2>Server beitreten</h2>
-    <p>Verbinde dich direkt über FiveM:</p>
-    <div class="ip" id="ip">127.0.0.1:30120</div>
+    <p class="ip" id="ip">127.0.0.1:30120</p>
     <button onclick="copyIP()">IP kopieren</button>
   </div>
-</section>
 
-<footer>
-  <p>© 2026 Rage City RP</p>
-</footer>
+</div>
 
 <script>
 function copyIP() {
