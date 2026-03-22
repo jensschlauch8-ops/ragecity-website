@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Rage City RP</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #0d0d0d;
+      color: white;
+      text-align: center;
+    }
+    header {
+      background: red;
+      padding: 20px;
+    }
+    h1 {
+      margin: 0;
+    }
+    section {
+      padding: 40px;
+    }
+    .box {
+      background: #1a1a1a;
+      padding: 20px;
+      margin: 20px auto;
+      width: 80%;
+      border-radius: 10px;
+    }
+    button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔥 Rage City RP 🔥</h1>
+</header>
+
+<section>
+  <div class="box">
+    <h2>Willkommen</h2>
+    <p>Willkommen auf unserem Roleplay Server!</p>
+  </div>
+
+  <div class="box">
+    <h2>Regeln</h2>
+    <p>Kein RDM, kein VDM, kein Meta-Gaming</p>
+  </div>
+
+  <div class="box">
+    <h2>Beitreten</h2>
+    <p id="ip">127.0.0.1:30120</p>
+    <button onclick="copyIP()">IP kopieren</button>
+  </div>
+</section>
+
+<script>
+function copyIP() {
+  const ip = document.getElementById("ip").innerText;
+  navigator.clipboard.writeText(ip);
+  alert("IP kopiert: " + ip);
+}
+</script>
+
+</body>
+</html>
