@@ -1,39 +1,28 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <title>Rage City RP</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #0d0d0d;
-      color: white;
-      text-align: center;
     }
-    header {
-      background: red;
-      padding: 20px;
-    }
-    h1 {
-      margin: 0;
-    }
-    section {
-      padding: 40px;
-    }
-    .box {
-      background: #1a1a1a;
-      padding: 20px;
-      margin: 20px auto;
-      width: 80%;
-      border-radius: 10px;
-    }
+
     button {
       background: red;
-      color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 25px;
+      color: white;
+      font-size: 1rem;
+      border-radius: 8px;
       cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff1a1a;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #777;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -41,25 +30,47 @@
 
 <header>
   <h1>🔥 Rage City RP 🔥</h1>
+  <p>Realistisches deutsches Roleplay</p>
 </header>
 
-<section>
-  <div class="box">
+<nav>
+  <a href="#home">Home</a>
+  <a href="#rules">Regeln</a>
+  <a href="#join">Beitreten</a>
+</nav>
+
+<section id="home">
+  <div class="card">
     <h2>Willkommen</h2>
-    <p>Willkommen auf unserem Roleplay Server!</p>
+    <p>Willkommen bei Rage City RP! Erlebe realistisches Roleplay, baue deine Story auf und werde Teil unserer Community.</p>
   </div>
+</section>
 
-  <div class="box">
-    <h2>Regeln</h2>
-    <p>Kein RDM, kein VDM, kein Meta-Gaming</p>
+<section id="rules">
+  <div class="card">
+    <h2>Regelwerk</h2>
+    <ul>
+      <li>Kein RDM (Random Deathmatch)</li>
+      <li>Kein VDM (Vehicle Deathmatch)</li>
+      <li>Kein Meta-Gaming</li>
+      <li>Realistisches Roleplay ist Pflicht</li>
+      <li>Respektvoller Umgang</li>
+    </ul>
   </div>
+</section>
 
-  <div class="box">
-    <h2>Beitreten</h2>
-    <p id="ip">127.0.0.1:30120</p>
+<section id="join">
+  <div class="card join-box">
+    <h2>Server beitreten</h2>
+    <p>Verbinde dich direkt über FiveM:</p>
+    <div class="ip" id="ip">127.0.0.1:30120</div>
     <button onclick="copyIP()">IP kopieren</button>
   </div>
 </section>
+
+<footer>
+  <p>© 2026 Rage City RP</p>
+</footer>
 
 <script>
 function copyIP() {
