@@ -51,8 +51,21 @@ body {
   border-left: 4px solid red;
 }
 
-h2 {
+.rule-box h2 {
   color: red;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rule-content {
+  display: none;
+  margin-top: 10px;
+}
+
+.arrow {
+  transition: transform 0.3s;
 }
 
 ul {
@@ -86,7 +99,6 @@ button:hover {
 
 <body>
 
-<!-- VIDEO HEADER -->
 <div class="video-header">
   <video autoplay muted loop>
     <source src="video.mp4" type="video/mp4">
@@ -101,9 +113,11 @@ button:hover {
 
 <div class="container">
 
+<!-- REGELN -->
+
 <div class="rule-box">
-<h2>§1 Allgemeines</h2>
-<ul>
+<h2 onclick="toggleRule(this)">§1 Allgemeines <span class="arrow">⬇️</span></h2>
+<ul class="rule-content">
 <li>Mit Betreten des Servers akzeptierst du alle Regeln</li>
 <li>Anweisungen des Teams sind Folge zu leisten</li>
 <li>Unwissenheit schützt nicht vor Strafe</li>
@@ -113,8 +127,8 @@ button:hover {
 </div>
 
 <div class="rule-box">
-<h2>§2 Roleplay Grundlagen</h2>
-<ul>
+<h2 onclick="toggleRule(this)">§2 Roleplay Grundlagen <span class="arrow">⬇️</span></h2>
+<ul class="rule-content">
 <li>Realistisches Roleplay ist Pflicht</li>
 <li>Du musst dein Leben schützen (FearRP)</li>
 <li>Bleibe immer in deiner Rolle</li>
@@ -124,8 +138,8 @@ button:hover {
 </div>
 
 <div class="rule-box">
-<h2>§3 Verboten</h2>
-<ul>
+<h2 onclick="toggleRule(this)">§3 Verboten <span class="arrow">⬇️</span></h2>
+<ul class="rule-content">
 <li>RDM (Random Deathmatch)</li>
 <li>VDM (Vehicle Deathmatch)</li>
 <li>Meta-Gaming</li>
@@ -137,8 +151,8 @@ button:hover {
 </div>
 
 <div class="rule-box">
-<h2>§4 Kommunikation</h2>
-<ul>
+<h2 onclick="toggleRule(this)">§4 Kommunikation <span class="arrow">⬇️</span></h2>
+<ul class="rule-content">
 <li>Beleidigungen sind verboten</li>
 <li>Rassismus ist verboten</li>
 <li>Sexismus ist verboten</li>
@@ -148,8 +162,8 @@ button:hover {
 </div>
 
 <div class="rule-box">
-<h2>§5 New Life Regel</h2>
-<ul>
+<h2 onclick="toggleRule(this)">§5 New Life Regel <span class="arrow">⬇️</span></h2>
+<ul class="rule-content">
 <li>Nach dem Tod keine Erinnerungen</li>
 <li>Nicht sofort zurückkehren</li>
 <li>Alte Konflikte sind vergessen</li>
@@ -157,8 +171,8 @@ button:hover {
 </div>
 
 <div class="rule-box">
-<h2>§6 Kriminalität</h2>
-<ul>
+<h2 onclick="toggleRule(this)">§6 Kriminalität <span class="arrow">⬇️</span></h2>
+<ul class="rule-content">
 <li>Überfälle nur mit RP Grund</li>
 <li>Keine sinnlosen Tötungen</li>
 <li>Geiseln realistisch behandeln</li>
@@ -167,8 +181,8 @@ button:hover {
 </div>
 
 <div class="rule-box">
-<h2>§7 Polizei</h2>
-<ul>
+<h2 onclick="toggleRule(this)">§7 Polizei <span class="arrow">⬇️</span></h2>
+<ul class="rule-content">
 <li>Anweisungen befolgen</li>
 <li>Flucht muss realistisch sein</li>
 <li>RP mit Polizei ausspielen</li>
@@ -176,8 +190,8 @@ button:hover {
 </div>
 
 <div class="rule-box">
-<h2>§8 Fahrzeuge</h2>
-<ul>
+<h2 onclick="toggleRule(this)">§8 Fahrzeuge <span class="arrow">⬇️</span></h2>
+<ul class="rule-content">
 <li>Realistisches Fahren Pflicht</li>
 <li>Kein Offroad mit Supersportwagen</li>
 <li>Keine absichtlichen Crashes</li>
@@ -185,8 +199,8 @@ button:hover {
 </div>
 
 <div class="rule-box">
-<h2>§9 Support</h2>
-<ul>
+<h2 onclick="toggleRule(this)">§9 Support <span class="arrow">⬇️</span></h2>
+<ul class="rule-content">
 <li>Support nur über Discord</li>
 <li>Kein Support im RP</li>
 <li>Logs entscheiden</li>
@@ -194,14 +208,16 @@ button:hover {
 </div>
 
 <div class="rule-box">
-<h2>§10 Strafen</h2>
-<ul>
+<h2 onclick="toggleRule(this)">§10 Strafen <span class="arrow">⬇️</span></h2>
+<ul class="rule-content">
 <li>Verwarnung</li>
 <li>Kick</li>
 <li>Temp Bann</li>
 <li>Perma Bann</li>
 </ul>
 </div>
+
+<!-- JOIN -->
 
 <div class="join">
 <h2>Beitreten</h2>
@@ -226,6 +242,19 @@ function copyIP() {
   const ip = document.getElementById("ip").innerText;
   navigator.clipboard.writeText(ip);
   alert("IP kopiert: " + ip);
+}
+
+function toggleRule(el) {
+  const content = el.parentElement.querySelector(".rule-content");
+  const arrow = el.querySelector(".arrow");
+
+  if (content.style.display === "block") {
+    content.style.display = "none";
+    arrow.style.transform = "rotate(0deg)";
+  } else {
+    content.style.display = "block";
+    arrow.style.transform = "rotate(180deg)";
+  }
 }
 </script>
 
