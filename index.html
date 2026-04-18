@@ -1,161 +1,176 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rage City RP</title>
 
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:black;
-  color:white;
-  overflow-x:hidden;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #1a0000, #0d0d0d);
+  color: white;
+  overflow-x: hidden;
 }
 
-/* BACKGROUND FX */
-#particles{
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  height:100%;
-  z-index:-3;
+/* PARTICLES */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
-.glow{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:radial-gradient(circle at top, rgba(255,0,0,0.25), transparent 60%);
-  z-index:-2;
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
-/* NAV */
-.navbar{
-  position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  padding:15px 25px;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
-}
-.navbar h3{
-  color:red;
-  margin:0;
+.navbar h3 {
+  margin: 0;
+  color: red;
 }
 
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-.hero h1{
-  font-size:4rem;
-  text-shadow:0 0 40px red;
-  animation:boom 2s infinite alternate;
-}
-@keyframes boom{
-  from{transform:scale(1);text-shadow:0 0 10px red;}
-  to{transform:scale(1.05);text-shadow:0 0 60px red;}
+/* HEADER */
+.video-header {
+  position: relative;
+  height: 420px;
+  margin-top: 60px;
 }
 
-.hero p{
-  opacity:0.7;
+.video-header video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4);
 }
 
-/* BUTTON */
-.btn{
-  margin-top:15px;
-  padding:12px 20px;
-  border:none;
-  border-radius:12px;
-  background:linear-gradient(45deg,red,darkred);
-  color:white;
-  cursor:pointer;
-  transition:0.3s;
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
-.btn:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 25px red;
+
+.overlay h1 {
+  font-size: 3.5rem;
+  text-shadow: 0 0 25px red;
+}
+
+.cta {
+  margin-top: 15px;
+  padding: 14px 25px;
+  font-size: 14px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, red, darkred);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 950px;
+  margin: auto;
+  padding: 40px 20px;
 }
 
 /* RULES */
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:30px;
+.rule-box {
+  background: rgba(20,20,20,0.7);
+  border-radius: 14px;
+  margin: 15px 0;
+  padding: 15px;
+  border: 1px solid rgba(255,0,0,0.25);
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.rule{
-  background:rgba(255,0,0,0.05);
-  border:1px solid rgba(255,0,0,0.2);
-  margin:10px 0;
-  border-radius:12px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:0.3s;
-}
-.rule:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 25px red;
+.rule-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(255,0,0,0.5);
 }
 
-.rule h2{
-  margin:0;
-  padding:15px;
-  color:red;
+.rule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.content{
-  display:none;
-  padding:0 15px 15px;
-  opacity:0.85;
+.rule-header h2 {
+  margin: 0;
+  color: red;
 }
 
-/* DISCORD */
-.discord{
-  display:flex;
-  justify-content:center;
-  padding:40px;
+.rule-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
 }
 
-/* JOIN */
-.join{
-  text-align:center;
-  padding:60px;
+.rule-content.open {
+  max-height: 500px;
 }
+
+/* BUTTONS */
+button {
+  padding: 12px 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  background: red;
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 20px red;
+}
+
+/* COOKIE */
+.cookie-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 320px;
+  background: rgba(0,0,0,0.85);
+  border-radius: 14px;
+  padding: 15px;
+  border: 1px solid #333;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.accept { background: red; }
+.decline { background: transparent; border: 1px solid #555; }
 
 /* TOAST */
-#toast{
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  background:black;
-  border:1px solid red;
-  padding:10px 15px;
-  display:none;
-  border-radius:10px;
-}
-
-/* MUSIC BTN */
-.music{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-}
-
-/* FADE */
-.fade{animation:fade 1s ease;}
-@keyframes fade{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1;transform:translateY(0)}
+#toast {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0,0,0,0.8);
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid red;
+  display: none;
 }
 </style>
 </head>
@@ -163,132 +178,118 @@ body{
 <body>
 
 <canvas id="particles"></canvas>
-<div class="glow"></div>
 
 <div class="navbar">
   <h3>🔥 Rage City RP</h3>
-  <button class="btn" onclick="join()">Join</button>
+  <button onclick="joinServer()">Join Server</button>
 </div>
 
-<div class="hero fade">
-  <h1>Rage City RP</h1>
-  <p>Serious Roleplay • Crime • Police • Economy</p>
-  <button class="btn" onclick="join()">Server beitreten 🔊</button>
-</div>
+<div class="video-header">
+  <video autoplay muted loop>
+    <source src="video.mp4" type="video/mp4">
+  </video>
 
-<!-- DISCORD LIVE -->
-<div class="discord fade">
-  <iframe 
-    src="https://discord.com/widget?id=DEIN_SERVER_ID&theme=dark"
-    width="350"
-    height="500"
-    frameborder="0">
-  </iframe>
+  <div class="overlay">
+    <h1>Rage City RP</h1>
+    <button class="cta" onclick="joinServer()">Jetzt beitreten</button>
+  </div>
 </div>
 
 <div class="container">
 
-<!-- FULL RULESET -->
-<div class="rule" onclick="toggle(this); click()">
-<h2>§1 Allgemeines</h2>
-<div class="content">
-<ul>
-<li>Mit Betreten akzeptierst du alle Regeln</li>
-<li>Team Anweisungen sind Pflicht</li>
-<li>Unwissenheit schützt nicht</li>
-<li>Respekt ist Pflicht</li>
-<li>Trolling verboten</li>
-</ul>
-</div>
+<!-- RULES -->
+<div class="rule-box" onclick="toggleRule(this)">
+  <div class="rule-header"><h2>§1 Allgemeines</h2></div>
+  <div class="rule-content">
+    <ul>
+      <li>Mit Betreten akzeptierst du alle Regeln</li>
+      <li>Team Anweisungen sind Pflicht</li>
+      <li>Respekt ist Pflicht</li>
+    </ul>
+  </div>
 </div>
 
-<div class="rule" onclick="toggle(this); click()">
-<h2>§2 Roleplay</h2>
-<div class="content">
-<ul>
-<li>Realistisches RP Pflicht</li>
-<li>FearRP aktiv</li>
-<li>Bleib in deiner Rolle</li>
-<li>RP hat Vorrang</li>
-<li>Kein Combat Logging</li>
-</ul>
-</div>
+<div class="rule-box" onclick="toggleRule(this)">
+  <div class="rule-header"><h2>§2 Roleplay</h2></div>
+  <div class="rule-content">
+    <ul>
+      <li>Realistisches RP Pflicht</li>
+      <li>FearRP aktiv</li>
+      <li>Bleib in deiner Rolle</li>
+    </ul>
+  </div>
 </div>
 
-<div class="rule" onclick="toggle(this); click()">
-<h2>§3 Verboten</h2>
-<div class="content">
-<ul>
-<li>RDM / VDM</li>
-<li>Meta Gaming</li>
-<li>Power RP</li>
-<li>Fail RP</li>
-<li>Bug Abuse</li>
-</ul>
-</div>
-</div>
-
-<div class="rule" onclick="toggle(this); click()">
-<h2>§4 Kommunikation</h2>
-<div class="content">
-<ul>
-<li>Kein Rassismus</li>
-<li>Kein Sexismus</li>
-<li>Voice Pflicht</li>
-<li>Kein Toxic</li>
-</ul>
-</div>
+<div class="rule-box" onclick="toggleRule(this)">
+  <div class="rule-header"><h2>§3 Verboten</h2></div>
+  <div class="rule-content">
+    <ul>
+      <li>RDM / VDM</li>
+      <li>Meta Gaming</li>
+      <li>Bug Abuse</li>
+    </ul>
+  </div>
 </div>
 
 </div>
 
-<div class="join fade">
-<h2>🔥 Server ready</h2>
-<button class="btn" onclick="join()">IP kopieren</button>
+<div class="container" style="text-align:center">
+  <h2>Server bereit</h2>
+  <button onclick="joinServer()">IP kopieren</button>
+  <br><br>
+  <a href="https://discord.gg/mEZrCZA7" target="_blank">
+    <button>Discord</button>
+  </a>
+</div>
+
+<!-- COOKIE -->
+<div id="cookieBox" class="cookie-box">
+  <p>Cookies für bessere Nutzung.</p>
+  <div class="cookie-buttons">
+    <button class="decline" onclick="hideCookie()">Ablehnen</button>
+    <button class="accept" onclick="acceptCookie()">Akzeptieren</button>
+  </div>
 </div>
 
 <div id="toast"></div>
 
-<!-- AUDIO -->
-<audio id="click" src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8b8f2b0c3.mp3"></audio>
-<audio id="join" src="https://cdn.pixabay.com/audio/2022/03/10/audio_3f6d2f5a2d.mp3"></audio>
-<audio id="music" loop src="https://cdn.pixabay.com/audio/2022/10/16/audio_2d3b6b2d3c.mp3"></audio>
-
-<div class="music">
-<button class="btn" onclick="musicToggle()">🎧 Music</button>
-</div>
-
 <script>
 
-const IP="DEIN_SERVER:30120";
+const SERVER_IP = "127.0.0.1:30120";
 
-function join(){
-navigator.clipboard.writeText(IP);
-toast("IP kopiert 🔥");
-document.getElementById("join").play();
+/* JOIN */
+function joinServer(){
+  navigator.clipboard.writeText(SERVER_IP);
+  showToast("IP kopiert 🔥");
 }
 
-function toggle(el){
-let c=el.querySelector(".content");
-c.style.display=c.style.display==="block"?"none":"block";
+/* RULE TOGGLE (FIXED) */
+function toggleRule(el){
+  const content = el.querySelector(".rule-content");
+  content.classList.toggle("open");
 }
 
-function click(){
-document.getElementById("click").play();
+/* TOAST */
+function showToast(msg){
+  const t = document.getElementById("toast");
+  t.innerText = msg;
+  t.style.display = "block";
+  setTimeout(()=>t.style.display="none",2000);
 }
 
-function toast(msg){
-let t=document.getElementById("toast");
-t.innerText=msg;
-t.style.display="block";
-setTimeout(()=>t.style.display="none",2000);
+/* COOKIE */
+function hideCookie(){
+  document.getElementById("cookieBox").style.display="none";
 }
 
-function musicToggle(){
-let m=document.getElementById("music");
-if(m.paused){m.play();toast("Music ON 🎧")}
-else{m.pause();toast("Music OFF")}
+function acceptCookie(){
+  localStorage.setItem("cookies","1");
+  hideCookie();
 }
+
+window.onload=()=>{
+  if(localStorage.getItem("cookies")) hideCookie();
+};
 
 /* PARTICLES */
 const c=document.getElementById("particles");
@@ -296,30 +297,28 @@ const x=c.getContext("2d");
 c.width=innerWidth;
 c.height=innerHeight;
 
-let p=Array.from({length:100},()=>({
+let p=Array.from({length:60},()=>({
 x:Math.random()*c.width,
 y:Math.random()*c.height,
 r:Math.random()*2
 }));
 
-function anim(){
+function animate(){
 x.clearRect(0,0,c.width,c.height);
 x.fillStyle="red";
-p.forEach(e=>{
-x.beginPath();
-x.arc(e.x,e.y,e.r,0,Math.PI*2);
-x.fill();
-e.y+=0.7;
-if(e.y>c.height)e.y=0;
-});
-requestAnimationFrame(anim);
-}
-anim();
 
-window.addEventListener("resize",()=>{
-c.width=innerWidth;
-c.height=innerHeight;
+p.forEach(e=>{
+  x.beginPath();
+  x.arc(e.x,e.y,e.r,0,Math.PI*2);
+  x.fill();
+  e.y+=0.3;
+  if(e.y>c.height)e.y=0;
 });
+
+requestAnimationFrame(animate);
+}
+animate();
+
 </script>
 
 </body>
