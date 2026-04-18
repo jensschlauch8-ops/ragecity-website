@@ -1,28 +1,64 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rage City RP</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  background: #0d0d0d;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #1a0000, #0d0d0d);
   color: white;
+  overflow-x: hidden;
 }
 
+/* PARTICLES */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.navbar h3 {
+  margin: 0;
+  color: red;
+}
+
+.navbar button {
+  padding: 8px 14px;
+  font-size: 12px;
+}
+
+/* HEADER */
 .video-header {
   position: relative;
-  height: 350px;
-  overflow: hidden;
+  height: 420px;
+  margin-top: 60px;
 }
 
 .video-header video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(0.4);
 }
 
 .overlay {
@@ -34,228 +70,209 @@ body {
 }
 
 .overlay h1 {
-  font-size: 2.5rem;
-  margin: 0;
+  font-size: 3.5rem;
+  text-shadow: 0 0 25px red;
 }
 
+.cta {
+  margin-top: 15px;
+  padding: 14px 25px;
+  font-size: 14px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, red, darkred);
+}
+
+/* CONTAINER */
 .container {
-  max-width: 900px;
+  max-width: 950px;
   margin: auto;
-  padding: 30px;
+  padding: 40px 20px;
 }
 
+/* RULES */
 .rule-box {
-  background: #151515;
-  padding: 20px;
-  margin: 20px 0;
-  border-left: 4px solid red;
+  background: rgba(20,20,20,0.7);
+  border-radius: 14px;
+  margin: 15px 0;
+  padding: 15px;
+  border: 1px solid rgba(255,0,0,0.25);
+  transition: 0.3s;
 }
 
-.rule-box h2 {
-  color: red;
-  cursor: pointer;
+.rule-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(255,0,0,0.5);
+}
+
+.rule-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  cursor: pointer;
 }
 
-.rule-content {
-  display: none;
-  margin-top: 10px;
+.rule-header h2 {
+  margin: 0;
+  color: red;
 }
 
 .arrow {
-  transition: transform 0.3s;
+  transition: 0.3s;
 }
 
-ul {
-  padding-left: 20px;
+.rule-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
 }
 
+.rule-content.open {
+  max-height: 500px;
+}
+
+/* JOIN */
 .join {
   text-align: center;
-  margin-top: 40px;
-}
-
-.ip {
-  font-size: 1.3rem;
-  color: red;
+  margin-top: 50px;
 }
 
 button {
-  padding: 10px 20px;
-  background: red;
+  padding: 12px 18px;
   border: none;
-  color: white;
   cursor: pointer;
+  border-radius: 10px;
+  background: red;
+  color: white;
+  transition: 0.3s;
 }
 
 button:hover {
-  opacity: 0.8;
-  transform: scale(1.05);
+  transform: scale(1.07);
+  box-shadow: 0 0 20px red;
 }
+
+/* COOKIE */
+.cookie-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 320px;
+  background: rgba(0,0,0,0.85);
+  border-radius: 14px;
+  padding: 15px;
+  border: 1px solid #333;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.accept { background: red; }
+.decline { background: transparent; border: 1px solid #555; }
+
+/* TOAST */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0,0,0,0.8);
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid red;
+  display: none;
+}
+
 </style>
 </head>
 
 <body>
 
+<canvas id="particles"></canvas>
+
+<div class="navbar">
+  <h3>🔥 Rage City RP</h3>
+  <button onclick="joinServer()">Join Server</button>
+</div>
+
 <div class="video-header">
   <video autoplay muted loop>
     <source src="video.mp4" type="video/mp4">
   </video>
-
   <div class="overlay">
-    <h1>🔥 Rage City RP 🔥</h1>
-    <p>Deutscher Roleplay Server</p>
-    <p style="color:red; font-weight:bold;">❗ Regelwerk lesen ist Pflicht ❗</p>
+    <h1>Rage City RP</h1>
+    <button class="cta" onclick="joinServer()">Jetzt beitreten</button>
   </div>
 </div>
 
 <div class="container">
 
-<!-- REGELN -->
-
 <div class="rule-box">
-<h2 onclick="toggleRule(this)">§1 Allgemeines <span class="arrow">⬇️</span></h2>
-<ul class="rule-content">
-<li>Mit Betreten des Servers akzeptierst du alle Regeln</li>
-<li>Anweisungen des Teams sind Folge zu leisten</li>
-<li>Unwissenheit schützt nicht vor Strafe</li>
-<li>Respektvoller Umgang ist Pflicht</li>
-<li>Trolling ist verboten</li>
-</ul>
+  <div class="rule-header" onclick="toggleRule(this)">
+    <h2>§6 Kriminalität</h2>
+    <span class="arrow">⌄</span>
+  </div>
+  <div class="rule-content">
+    <ul><li>RP Pflicht</li><li>Kein RDM</li><li>Realistisch handeln</li></ul>
+  </div>
 </div>
 
-<div class="rule-box">
-<h2 onclick="toggleRule(this)">§2 Roleplay Grundlagen <span class="arrow">⬇️</span></h2>
-<ul class="rule-content">
-<li>Realistisches Roleplay ist Pflicht</li>
-<li>Du musst dein Leben schützen (FearRP)</li>
-<li>Bleibe immer in deiner Rolle</li>
-<li>RP hat immer Vorrang</li>
-<li>Kein Ausloggen im RP</li>
-</ul>
 </div>
-
-<div class="rule-box">
-<h2 onclick="toggleRule(this)">§3 Verboten <span class="arrow">⬇️</span></h2>
-<ul class="rule-content">
-<li>RDM (Random Deathmatch)</li>
-<li>VDM (Vehicle Deathmatch)</li>
-<li>Meta-Gaming</li>
-<li>Power-RP</li>
-<li>Fail-RP</li>
-<li>Combat Logging</li>
-<li>Bugusing</li>
-</ul>
-</div>
-
-<div class="rule-box">
-<h2 onclick="toggleRule(this)">§4 Kommunikation <span class="arrow">⬇️</span></h2>
-<ul class="rule-content">
-<li>Beleidigungen sind verboten</li>
-<li>Rassismus ist verboten</li>
-<li>Sexismus ist verboten</li>
-<li>Voice Chat Pflicht</li>
-<li>Kein Soundboard Spam</li>
-</ul>
-</div>
-
-<div class="rule-box">
-<h2 onclick="toggleRule(this)">§5 New Life Regel <span class="arrow">⬇️</span></h2>
-<ul class="rule-content">
-<li>Nach dem Tod keine Erinnerungen</li>
-<li>Nicht sofort zurückkehren</li>
-<li>Alte Konflikte sind vergessen</li>
-</ul>
-</div>
-
-<div class="rule-box">
-<h2 onclick="toggleRule(this)">§6 Kriminalität <span class="arrow">⬇️</span></h2>
-<ul class="rule-content">
-<li>Überfälle nur mit RP Grund</li>
-<li>Keine sinnlosen Tötungen</li>
-<li>Geiseln realistisch behandeln</li>
-<li>Keine Dauerkriminalität</li>
-</ul>
-</div>
-
-<div class="rule-box">
-<h2 onclick="toggleRule(this)">§7 Polizei <span class="arrow">⬇️</span></h2>
-<ul class="rule-content">
-<li>Anweisungen befolgen</li>
-<li>Flucht muss realistisch sein</li>
-<li>RP mit Polizei ausspielen</li>
-</ul>
-</div>
-
-<div class="rule-box">
-<h2 onclick="toggleRule(this)">§8 Fahrzeuge <span class="arrow">⬇️</span></h2>
-<ul class="rule-content">
-<li>Realistisches Fahren Pflicht</li>
-<li>Kein Offroad mit Supersportwagen</li>
-<li>Keine absichtlichen Crashes</li>
-</ul>
-</div>
-
-<div class="rule-box">
-<h2 onclick="toggleRule(this)">§9 Support <span class="arrow">⬇️</span></h2>
-<ul class="rule-content">
-<li>Support nur über Discord</li>
-<li>Kein Support im RP</li>
-<li>Logs entscheiden</li>
-</ul>
-</div>
-
-<div class="rule-box">
-<h2 onclick="toggleRule(this)">§10 Strafen <span class="arrow">⬇️</span></h2>
-<ul class="rule-content">
-<li>Verwarnung</li>
-<li>Kick</li>
-<li>Temp Bann</li>
-<li>Perma Bann</li>
-</ul>
-</div>
-
-<!-- JOIN -->
 
 <div class="join">
-<h2>Beitreten</h2>
-<p class="ip" id="ip">127.0.0.1:30120</p>
-
-<button onclick="copyIP()">IP kopieren</button>
-
-<br>
-
-<a href="https://discord.gg/mEZrCZA7" target="_blank" style="text-decoration:none;">
-  <button style="margin-top:10px; background:#5865F2; padding:12px 25px; font-size:16px;">
-    💬 Discord beitreten (Pflicht)
-  </button>
-</a>
-
+  <h2>Server bereit</h2>
+  <button onclick="joinServer()">Jetzt verbinden</button>
+  <br><br>
+  <a href="https://discord.gg/mEZrCZA7" target="_blank">
+    <button>Discord</button>
+  </a>
 </div>
 
+<div id="cookieBox" class="cookie-box">
+  <p>Cookies für bessere Nutzung.</p>
+  <div class="cookie-buttons">
+    <button class="decline" onclick="hideCookie()">Ablehnen</button>
+    <button class="accept" onclick="acceptCookie()">Akzeptieren</button>
+  </div>
 </div>
+
+<div id="toast"></div>
 
 <script>
-function copyIP() {
-  const ip = document.getElementById("ip").innerText;
-  navigator.clipboard.writeText(ip);
-  alert("IP kopiert: " + ip);
+const SERVER_IP = "127.0.0.1:30120";
+
+function joinServer(){
+  navigator.clipboard.writeText(SERVER_IP);
+  showToast("IP kopiert & bereit!");
 }
 
-function toggleRule(el) {
-  const content = el.parentElement.querySelector(".rule-content");
-  const arrow = el.querySelector(".arrow");
-
-  if (content.style.display === "block") {
-    content.style.display = "none";
-    arrow.style.transform = "rotate(0deg)";
-  } else {
-    content.style.display = "block";
-    arrow.style.transform = "rotate(180deg)";
-  }
+function toggleRule(el){
+  const c = el.parentElement.querySelector(".rule-content");
+  const a = el.querySelector(".arrow");
+  c.classList.toggle("open");
+  a.style.transform = c.classList.contains("open") ? "rotate(180deg)" : "rotate(0deg)";
 }
+
+function showToast(msg){
+  const t = document.getElementById("toast");
+  t.innerText = msg;
+  t.style.display = "block";
+  setTimeout(()=>t.style.display="none",2000);
+}
+
+function hideCookie(){ document.getElementById("cookieBox").style.display="none"; }
+function acceptCookie(){ localStorage.setItem("cookies","1"); hideCookie(); }
+window.onload=()=>{ if(localStorage.getItem("cookies")) hideCookie(); }
+
+/* particles simple */
+const c=document.getElementById("particles");
+const x=c.getContext("2d");
+c.width=innerWidth;
+c.height=innerHeight;
+let p=Array.from({length:60},()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2}));
+function a(){x.clearRect(0,0,c.width,c.height);x.fillStyle="red";p.forEach(e=>{x.beginPath();x.arc(e.x,e.y,e.r,0,6.28);x.fill();e.y+=0.3;if(e.y>c.height)e.y=0});requestAnimationFrame(a)}a();
 </script>
 
 </body>
